@@ -1,5 +1,7 @@
 # Spine::Hub
 
+[![Code Climate](https://codeclimate.com/github/rspine/hub/badges/gpa.svg)](https://codeclimate.com/github/rspine/hub)
+
 Provides Publish/Subscribe pattern.
 
 ## Installation
