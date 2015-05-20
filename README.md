@@ -1,6 +1,7 @@
 # Spine::Hub
 
 [![Code Climate](https://codeclimate.com/github/rspine/hub/badges/gpa.svg)](https://codeclimate.com/github/rspine/hub)
+[![Codeship Status for rspine/hub](https://codeship.com/projects/951d2de0-e105-0132-721b-5eabae96dc8d/status?branch=master)](https://codeship.com/projects/81031)
 
 Provides Publish/Subscribe pattern.
 
