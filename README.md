@@ -42,7 +42,7 @@ class Listener
 end
 
 service = Service.new
-service.subscribe(Listener)
+service.subscribe(Listener.new)
 service.on(:action_executed) do |status|
   puts "Action executed: #{ status }"
 end
