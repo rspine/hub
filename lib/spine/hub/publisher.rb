@@ -1,8 +1,10 @@
+require 'set'
+
 module Spine
   module Hub
     module Publisher
       def subscribers
-        @subscribers ||= []
+        @subscribers ||= Set.new
       end
 
       # Adds subscribers.
@@ -10,7 +12,7 @@ module Spine
       # ==== Attributes
       # * +subscribers+ - List of addable subscribers.
       def subscribe(*subscribers)
-        @subscribers ||= []
+        @subscribers ||= Set.new
         @subscribers += subscribers
       end
 

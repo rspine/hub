@@ -8,7 +8,7 @@ module Spine
       let(:subscriber) { double }
 
       it 'has subscribers' do
-        expect(subject.subscribers).to eq([])
+        expect(subject.subscribers).to eq(Set.new)
       end
 
       it 'adds subscriber' do
