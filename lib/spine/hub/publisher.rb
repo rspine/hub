@@ -3,8 +3,12 @@ require 'set'
 module Spine
   module Hub
     module Publisher
+      def local_subscribers
+        @local_subscribers ||= Set.new
+      end
+
       def subscribers
-        @subscribers ||= Set.new
+        local_subscribers + Subscriptions::Global.subscribers
       end
 
       # Adds subscribers.
@@ -12,8 +16,8 @@ module Spine
       # ==== Attributes
       # * +subscribers+ - List of addable subscribers.
       def subscribe(*subscribers)
-        @subscribers ||= Set.new
-        @subscribers += subscribers
+        @local_subscribers ||= Set.new
+        @local_subscribers += subscribers
       end
 
       # Publishes event to subscribers.
