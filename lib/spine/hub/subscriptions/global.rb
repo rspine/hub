@@ -13,7 +13,7 @@ module Spine
 
         attr_reader :subscribers
 
-        def add(*subscribers)
+        def subscribe(*subscribers)
           @subscribers += subscribers
         end
 
@@ -21,8 +21,8 @@ module Spine
           @subscribers = Set.new
         end
 
-        def self.add(*subscribers)
-          instance.add(*subscribers)
+        def self.subscribe(*subscribers)
+          instance.subscribe(*subscribers)
         end
 
         def self.subscribers

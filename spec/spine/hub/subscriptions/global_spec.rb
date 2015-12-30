@@ -12,20 +12,20 @@ module Spine
         let(:publisher) { double.extend(Publisher) }
 
         it 'adds global subscribers' do
-          subject.add(subscriber)
+          subject.subscribe(subscriber)
           expect(subject.subscribers.count).to eq(1)
         end
 
         it 'notifies global subscribers' do
           expect(subscriber).to receive(:notify).with(:test, 1)
 
-          subject.add(subscriber)
+          subject.subscribe(subscriber)
           publisher.publish(:test, 1)
         end
 
         it 'clears subscribers' do
-          subject.add(double)
-          subject.add(double)
+          subject.subscribe(double)
+          subject.subscribe(double)
           subject.clear
           expect(subject.subscribers.count).to eq(0)
         end
