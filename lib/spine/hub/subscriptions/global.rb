@@ -17,12 +17,20 @@ module Spine
           @subscribers += subscribers
         end
 
+        def clear
+          @subscribers = Set.new
+        end
+
         def self.add(*subscribers)
           instance.add(*subscribers)
         end
 
         def self.subscribers
           instance.subscribers
+        end
+
+        def self.clear
+          instance.clear
         end
       end
 
