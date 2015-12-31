@@ -6,7 +6,9 @@ module Spine
 
     module Subscriptions
       autoload :Closure, 'spine/hub/subscriptions/closure'
-      autoload :Global, 'spine/hub/subscriptions/global'
+      autoload :Registry, 'spine/hub/subscriptions/registry'
     end
+
+    extend Subscriptions::Registry
   end
 end

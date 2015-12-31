@@ -1,23 +1,10 @@
-require 'set'
-
 module Spine
   module Hub
     module Publisher
-      def local_subscribers
-        @local_subscribers ||= Set.new
-      end
+      include Subscriptions::Registry
 
       def subscribers
-        local_subscribers + Subscriptions::Global.subscribers
-      end
-
-      # Adds subscribers.
-      #
-      # ==== Attributes
-      # * +subscribers+ - List of addable subscribers.
-      def subscribe(*subscribers)
-        @local_subscribers ||= Set.new
-        @local_subscribers += subscribers
+        super + Hub.subscribers
       end
 
       # Publishes event to subscribers.
@@ -31,17 +18,6 @@ module Spine
             subscriber.notify(event, *arguments)
           end
         end
-      end
-
-      # Adds block subscriber.
-      #
-      # ==== Arguments
-      # * +event+ - Subscriber triggering event.
-      def on(event, &block)
-        if block_given?
-          subscribe(Subscriptions::Closure.new(event, block))
-        end
-        self
       end
     end
   end
