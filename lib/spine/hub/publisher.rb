@@ -3,10 +3,6 @@ module Spine
     module Publisher
       include Subscriptions::Registry
 
-      def subscribers
-        super + Hub.subscribers
-      end
-
       # Publishes event to subscribers.
       #
       # ==== Attributes

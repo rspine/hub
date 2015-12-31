@@ -8,7 +8,10 @@ module Spine
       after(:each) { subject.unsubscribe_all }
 
       let(:subscriber) { double }
-      let(:publisher) { double.extend(Publisher) }
+      let(:publisher) {
+        double.extend(Publisher).extend(Subscriptions::Global)
+      }
+      let(:local_publisher) { double.extend(Publisher) }
 
       it 'adds global subscribers' do
         subject.subscribe(subscriber)
@@ -27,6 +30,11 @@ module Spine
         subject.subscribe(double)
         subject.unsubscribe_all
         expect(subject.subscribers.count).to eq(0)
+      end
+
+      it 'ignores global subcribers on local publisher' do
+        subject.subscribe(double)
+        expect(local_publisher.subscribers.size).to eq(0)
       end
     end
   end
