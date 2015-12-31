@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    spine-hub (0.1.0)
+    spine-hub (0.5.0)
 
 GEM
   remote: https://rubygems.org/
@@ -42,4 +42,4 @@ DEPENDENCIES
   spine-hub!
 
 BUNDLED WITH
-   1.10.2
+   1.10.6
