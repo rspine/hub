@@ -60,3 +60,27 @@ class MySubscriber
   end
 end
 ```
+
+When global subscribers are needed, extend your publisher with
+`Spine::Hub::Subcriptions::Global` module. It also works with `Repeater`
+module.
+
+```ruby
+class Service
+  include Spine::Hub::Publisher
+  include Spine::Hub::Subscriptions::Global
+
+  def action
+    # ...
+  end
+end
+```
+
+For registering to global scope:
+
+```ruby
+Spine::Hub.subscribe(MySubscriber.new)
+Spine::Hub.on(:my_event) do |argument|
+  # ...
+end
+```
